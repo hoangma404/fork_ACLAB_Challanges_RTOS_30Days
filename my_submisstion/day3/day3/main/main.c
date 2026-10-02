@@ -22,8 +22,10 @@
 void hello_task(void *pvParameters) {
     int count = 0;
     while (1) {
+        // đọc tick của freeRTOS để tính toán số giây, 
         TickType_t tick_count = xTaskGetTickCount();
         
+        // configTICK_RATE_HZ là số tick trong 1 giây, chia tick_count cho configTICK_RATE_HZ để ra số giây
         printf("[%lds] Hello from task (count = %d)\n",  tick_count / configTICK_RATE_HZ, count++ );
         vTaskDelay(pdMS_TO_TICKS(2000));
     }
